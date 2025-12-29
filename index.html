@@ -153,6 +153,12 @@
 
         if (!hamburger || !nav || !overlay) return;
 
+        // Détection Android pour ajustements CSS spécifiques
+        const ua = navigator.userAgent || navigator.vendor || window.opera;
+        if (/android/i.test(ua)) {
+            document.body.classList.add('android');
+        }
+
         const toggleMenu = () => {
             nav.classList.toggle('active');
             overlay.classList.toggle('active');

@@ -480,6 +480,30 @@ ul {
     }
 }
 
+/* Overrides spécifiques pour Android : largeur + animation plus rapides
+   (activées via la classe `android` ajoutée par le JS) */
+@media (max-width: 768px) {
+    body.android .nav .menu,
+    body.android .nav ul {
+        width: 320px;
+        right: -320px;
+        padding-top: 84px;
+    }
+
+    body.android .nav.active .menu,
+    body.android .nav.active ul {
+        right: 0;
+        transition: right 0.2s cubic-bezier(.22,.9,.36,1);
+    }
+
+    /* Liens légèrement plus grands pour le tactile Android */
+    body.android .nav .menu a,
+    body.android .nav ul a {
+        font-size: 20px;
+        padding: 12px 16px;
+    }
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .contact-form {
