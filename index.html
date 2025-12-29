@@ -16,11 +16,20 @@
 <script>
     const hamburger = document.querySelector('.hamburger');
     const nav = document.querySelector('.nav');
+    const overlay = document.querySelector('.overlay');
 
     hamburger.addEventListener('click', () => {
-        nav.classList.toggle('active'); // ajoute/retire la classe 'active'
+        nav.classList.toggle('active');
+        overlay.classList.toggle('active');
+    });
+
+    // Fermer le menu en cliquant sur l'overlay
+    overlay.addEventListener('click', () => {
+        nav.classList.remove('active');
+        overlay.classList.remove('active');
     });
 </script>
+
 
 
 <body>
@@ -35,7 +44,7 @@
 
         <nav class="nav">
             <div class="hamburger">&#9776;</div>
-            <ul>
+            <ul class="menu">
                 <li><a href="index.html" class="active">Accueil</a></li>
                 <li><a href="about.html">À propos</a></li>
                 <li><a href="services.html">Services</a></li>
