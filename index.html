@@ -12,6 +12,17 @@
     <!-- CSS principal -->
     <link rel="stylesheet" href="css/style.css">
 </head>
+
+<script>
+    const hamburger = document.querySelector('.hamburger');
+    const nav = document.querySelector('.nav');
+
+    hamburger.addEventListener('click', () => {
+        nav.classList.toggle('active'); // ajoute/retire la classe 'active'
+    });
+</script>
+
+
 <body>
 
 <!-- ===== Header / Navigation ===== -->
