@@ -61,9 +61,19 @@ ul {
 }
 
 .nav ul {
+    list-style: none;
     display: flex;
     gap: 25px;
+    margin: 0;
+    align-items: center;
 }
+
+.hamburger {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
 
 .nav a {
     color: #040404;
@@ -401,6 +411,33 @@ ul {
 
 .contact-form button:hover {
     background: #e0a020;
+}
+
+@media (max-width: 768px) {
+    .header .container {
+        flex-direction: row; /* garde logo et menu sur une ligne */
+        justify-content: space-between;
+    }
+
+    .nav ul {
+        flex-direction: column;
+        gap: 15px;
+        display: none; /* caché par défaut */
+        width: 100%;
+        background: var(--primary);
+        position: absolute;
+        top: 60px; /* juste en dessous du header */
+        left: 0;
+        padding: 10px 0;
+    }
+
+    .nav.active ul {
+        display: flex;
+    }
+
+    .hamburger {
+        display: block; /* visible sur mobile */
+    }
 }
 
 /* Responsive */
