@@ -13,25 +13,6 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<script>
-    const hamburger = document.querySelector('.hamburger');
-    const nav = document.querySelector('.nav');
-    const overlay = document.querySelector('.overlay');
-
-    hamburger.addEventListener('click', () => {
-        nav.classList.toggle('active');
-        overlay.classList.toggle('active');
-    });
-
-    // Fermer le menu en cliquant sur l'overlay
-    overlay.addEventListener('click', () => {
-        nav.classList.remove('active');
-        overlay.classList.remove('active');
-    });
-</script>
-
-
-
 <body>
 
 <!-- ===== Header / Navigation ===== -->
@@ -54,6 +35,9 @@
         </nav>
     </div>
 </header>
+
+<!-- Overlay pour le menu mobile -->
+<div class="overlay"></div>
 
 <!-- ===== Hero Section ===== -->
 <section class="hero">
@@ -159,6 +143,31 @@
         <p>© 2025 - Cabinet d’Ingénierie Bâtiment. Tous droits réservés.</p>
     </div>
 </footer>
+
+<!-- Script menu mobile placé en bas pour garantir le DOM chargé -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const hamburger = document.querySelector('.hamburger');
+        const nav = document.querySelector('.nav');
+        const overlay = document.querySelector('.overlay');
+
+        if (!hamburger || !nav || !overlay) return;
+
+        const toggleMenu = () => {
+            nav.classList.toggle('active');
+            overlay.classList.toggle('active');
+            document.body.classList.toggle('menu-open');
+        };
+
+        hamburger.addEventListener('click', toggleMenu);
+
+        overlay.addEventListener('click', () => {
+            nav.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.classList.remove('menu-open');
+        });
+    });
+</script>
 
 </body>
 </html>

@@ -276,18 +276,6 @@ ul {
    RESPONSIVE
 ================================ */
 @media (max-width: 768px) {
-    .nav ul {
-        flex-direction: column;
-        background: #0a2540;
-        position: absolute;
-        top: 70px;
-        right: 0;
-        width: 100%;
-        display: block;
-
-
-    }
-
     .hero-content h2 {
         font-size: 32px;
     }
@@ -415,28 +403,80 @@ ul {
 
 @media (max-width: 768px) {
     .header .container {
-        flex-direction: row; /* garde logo et menu sur une ligne */
+        flex-direction: row;
         justify-content: space-between;
-    }
-
-    .nav ul {
-        flex-direction: column;
-        gap: 15px;
-        display: none; /* caché par défaut */
-        width: 100%;
-        background: var(--primary);
-        position: absolute;
-        top: 60px; /* juste en dessous du header */
-        left: 0;
-        padding: 10px 0;
-    }
-
-    .nav.active ul {
-        display: flex;
+        align-items: center;
     }
 
     .hamburger {
         display: block; /* visible sur mobile */
+        z-index: 1100;
+    }
+
+    /* Menu mobile: slide-in panel */
+    .nav {
+        position: relative;
+    }
+
+    .nav .menu,
+    .nav ul {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        padding: 20px;
+        margin: 0;
+        list-style: none;
+        position: fixed;
+        top: 0;
+        right: -280px; /* caché à droite */
+        width: 260px;
+        height: 100vh;
+        background: #0a2540;
+        color: #fff;
+        transition: right 0.28s ease-in-out;
+        box-shadow: -6px 0 20px rgba(0,0,0,0.2);
+        z-index: 1050;
+        padding-top: 80px; /* espace pour header */
+    }
+
+    .nav.active .menu,
+    .nav.active ul {
+        right: 0; /* visible */
+    }
+
+    /* Overlay pour fermer le menu en touch */
+    .overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.45);
+        z-index: 1040;
+        opacity: 0;
+        transition: opacity 0.2s ease-in-out;
+    }
+
+    .overlay.active {
+        display: block;
+        opacity: 1;
+    }
+
+    /* Liens du menu mobile */
+    .nav .menu a,
+    .nav ul a {
+        color: #fff;
+        padding: 8px 12px;
+        display: block;
+        font-size: 18px;
+    }
+
+    .nav .menu a.active,
+    .nav ul a.active {
+        color: #f9b233;
+    }
+
+    /* Assure que le contenu principal ne soit pas caché par le menu */
+    body.menu-open {
+        overflow: hidden;
     }
 }
 
@@ -525,10 +565,15 @@ ul {
         font-size: 1rem;
     }
 }
+
 .logo {
-  max-width: 140px; /* ajuste : 100px / 120px / 140px */
-  height: auto;
+    max-width: 140px; /* ajuste : 100px / 120px / 140px */
+    height: auto;
 }
 
-
+/* Petite amélioration : variables de thème */
+:root {
+        --primary: #0a2540;
+        --accent: #f9b233;
+}
 }
